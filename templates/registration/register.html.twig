@@ -1,0 +1,76 @@
+{#{% extends 'base.html.twig' %}#}
+
+{#{% block title %}Register{% endblock %}#}
+
+{#{% block body %}#}
+{#    <h1>Register</h1>#}
+
+{#    {{ form_start(registrationForm) }}#}
+{#        {{ form_row(registrationForm.name) }}#}
+
+{#        {{ form_row(registrationForm.email) }}#}
+{#        {{ form_row(registrationForm.password.first) }}#}
+{#        {{ form_row(registrationForm.password.second) }}#}
+{#        {{ form_row(registrationForm.agreeTerms) }}#}
+
+{#        <button type="submit" class="btn">Register</button>#}
+{#    {{ form_end(registrationForm) }}#}
+{#{% endblock %}#}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Register</title>
+    <link rel="stylesheet" href="register/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="register/assets/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="register/assets/css/styles.css">
+</head>
+{% block body %}
+    <section class="register-photo">
+        <div class="form-container">
+
+
+            {{ form_start(registrationForm) }}
+
+                <h2 class="text-center"><strong>Create</strong> an account.</h2>
+
+{#            {% if form_errors(registrationForm.password.first)  != null  %}#}
+{#                <div class="mb-2">#}
+{#                    <div class="alert alert-danger" role="alert">#}
+{#                        {{ form_errors(registrationForm.password.first) }}#}
+{#                    </div>#}
+{#                </div>#}
+{#            {% endif %}#}
+            <div class="mb-2">
+                    {{ form_row(registrationForm.name, {'attr':{'class':'form-control'}}) }}
+{#                    <input class="form-control" type="email" name="email" placeholder="Email">#}
+                </div>
+                <div class="mb-2">
+                    {{ form_row(registrationForm.email, {'attr':{'class':'form-control'}}) }}
+{#                    <input class="form-control" type="email" name="email" placeholder="Email">#}
+                </div>
+                <div class="mb-2">
+                    {{ form_row(registrationForm.password.first, {'attr':{'class':'form-control'}}) }}
+{#                    <input class="form-control" type="password" name="password" placeholder="Password">#}
+                </div>
+                <div class="mb-2">
+                    {{ form_row(registrationForm.password.second, {'attr':{'class':'form-control'}}) }}
+{#                    <input class="form-control" type="password" name="password-repeat" placeholder="Password (repeat)">#}
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary d-block w-100" type="submit">Register</button>
+                </div>
+            <a class="already" href="/login">You already have an account? Login here.</a>
+
+            {{ form_end(registrationForm) }}
+
+        </div>
+    </section>
+    <script src="register/assets/bootstrap/js/bootstrap.min.js"></script>
+{% endblock %}
+
+
+</html>

@@ -1,0 +1,88 @@
+{#{% extends 'base.html.twig' %}#}
+
+{#{% block title %}Log in!{% endblock %}#}
+
+{#{% block body %}#}
+{#<form method="post">#}
+{#    {% if error %}#}
+{#        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>#}
+{#    {% endif %}#}
+
+{#    {% if app.user %}#}
+{#        <div class="mb-3">#}
+{#            You are logged in as {{ app.user.email }}, <a href="{{ path('app_logout') }}">Logout</a>#}
+{#        </div>#}
+{#    {% endif %}#}
+
+{#    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>#}
+{#    <label for="inputEmail">Email</label>#}
+{#    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>#}
+{#    <label for="inputPassword">Password</label>#}
+{#    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>#}
+
+{#    <input type="hidden" name="_csrf_token"#}
+{#           value="{{ csrf_token('authenticate') }}"#}
+{#    >#}
+
+
+{#        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.#}
+{#        See https://symfony.com/doc/current/security/remember_me.html#}
+
+{#        <div class="checkbox mb-3">#}
+{#            <label>#}
+{#                <input type="checkbox" name="_remember_me"> Remember me#}
+{#            </label>#}
+{#        </div>#}
+
+
+{#    <button class="btn btn-lg btn-primary" type="submit">#}
+{#        Sign in#}
+{#    </button>#}
+{#</form>#}
+{#{% endblock %}#}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Login</title>
+    <link rel="stylesheet" href="login/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="login/assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="login/assets/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="login/assets/css/styles.css">
+</head>
+{% block body %}
+<section class="login-clean">
+    <form method="post">
+
+        <h2 class="visually-hidden">Login Form</h2>
+        <div class="illustration">
+            <i class="icon ion-ios-timer"></i>
+            <input class="form-control-plaintext" type="text" value="Tiime Counter" readonly="" style="width: 250px;font-size: 29px;text-align: center;">
+        </div>
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        <div class="mb-3">
+            <input type="email" class="form-control" value="{{ last_username }}" type="email" id="inputEmail" name="email" placeholder="Email" autocomplete="email" required autofocus>
+        </div>
+        <div class="mb-3">
+            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" autocomplete="current-password" required>
+        </div>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary d-block w-100" type="submit" style="background: rgb(54,51,52);">Log In</button>
+        </div>
+        <a class="forgot" href="/register">Register to use the application!</a>
+    </form>
+</section>
+<script src="login/assets/bootstrap/js/bootstrap.min.js"></script>
+{% endblock %}
+
+</html>
