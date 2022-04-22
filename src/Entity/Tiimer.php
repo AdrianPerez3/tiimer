@@ -14,31 +14,43 @@ class Tiimer
     private $id;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'tiimers')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, name: "idUser", referencedColumnName: "id")]
     private $user;
 
-    #[ORM\Column(type: 'datetime')]
+    #[ORM\Column(type: 'time')]
     private $startTime;
 
-    #[ORM\Column(type: 'datetime')]
+    #[ORM\Column(type: 'time')]
     private $endTime;
+
+    #[ORM\Column(type: 'datetime')]
+    private $date;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $description;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUser(): ?User
+    /**
+     * @return mixed
+     */
+    public function getUser()
     {
         return $this->user;
     }
 
-    public function setUser(?User $user): self
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user): void
     {
         $this->user = $user;
-
-        return $this;
     }
+
+
 
     public function getStartTime(): ?\DateTimeInterface
     {
@@ -60,6 +72,31 @@ class Tiimer
     public function setEndTime(\DateTimeInterface $endTime): self
     {
         $this->endTime = $endTime;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

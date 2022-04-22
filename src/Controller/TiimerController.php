@@ -17,20 +17,24 @@ class TiimerController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
 
-        $user = new User();
         $tiimer = new Tiimer();
         $form = $this->createForm(TiimerType::class, $tiimer);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-//            $tiimer->setUser($user->getId());
-            $entityManager->persist($user);
+
+            $tiimer->setUser($this->getUser());
+            $entityManager->persist($tiimer);
             $entityManager->flush();
+            return $this->redirect($request->getUri());
+
         }
 
 
 
-            return $this->render('tiimer/index.html.twig', [
-            'tiimerForm' => $form->createView(),
-        ]);
+
+        return $this->render('tiimer/index.html.twig', [
+                "tiimerForm"=>$form->createView()
+
+            ]);
     }
 }

@@ -6,6 +6,12 @@ const notice = document.querySelector('.noticeBoard')
 
 const completed = document.querySelector('.completed-list')
 
+document.getElementById('tiimer_date').valueAsDate = new Date();
+document.getElementById('tiimer_date').setAttribute("readonly", "true");
+document.getElementById('tiimer_startTime').setAttribute("readonly", "true");
+document.getElementById('tiimer_endTime').setAttribute("readonly", "true");
+
+
 let workDuration = descForm.workTime.value;
 let shortDesc = descForm.shortDesc.value;
 let timeRatio_of_progress = ((workDuration * 60)/100) * 1000;
@@ -48,7 +54,7 @@ myBtns.addEventListener('click',(e)=>{
                     myBtns.children[1].classList.remove('d-none')
                     myBtns.children[2].classList.add('d-none')
                     const checkCurrtime = new Date();
-                    currentTime = checkCurrtime.toLocaleTimeString();
+                    currentTime = checkCurrtime.toLocaleTimeString('es-ES', { timeZone: 'Europe/Madrid' });
                 }
                 else{
                 errorMessage.classList.remove('d-none')
@@ -77,7 +83,13 @@ myBtns.addEventListener('click',(e)=>{
         myBtns.children[2].classList.remove('d-none')
 
         const checkEndtime = new Date();
-        EndTime = checkEndtime.toLocaleTimeString();
+        EndTime = checkEndtime.toLocaleTimeString('es-ES', { timeZone: 'Europe/Madrid' });
+
+        document.querySelector(".popup").style.display = "block";
+        document.getElementById("tiimer_startTime").value = currentTime;
+        document.getElementById("tiimer_endTime").value = EndTime;
+        document.getElementById("tiimer_description").value = shortDesc;
+
 
         let html = `
         <div class="item my-4">
@@ -116,7 +128,13 @@ let timeReamaining = () =>{
             myBtns.children[2].classList.remove('d-none')
 
             const checkEndtime = new Date();
-            EndTime = checkEndtime.toLocaleTimeString();
+            EndTime = checkEndtime.toLocaleTimeString('es-ES', { timeZone: 'Europe/Madrid' });
+
+            document.querySelector(".popup").style.display = "block";
+            document.getElementById("tiimer_startTime").value = currentTime;
+            document.getElementById("tiimer_endTime").value = EndTime;
+            document.getElementById("tiimer_description").value = shortDesc;
+
 
             let html = `
         <div class="item my-4">
@@ -185,4 +203,27 @@ let clearAll = () =>{
 let sessionTime = () =>{
     return `Session was started at ${currentTime} and ended at ${EndTime}`
 }
+
+
+//Add item checkbox
+function addItem(){
+    var ul = document.getElementById('ul');
+    var label = document.createElement('label');
+
+    var text = document.getElementById('texto');
+
+    var checkbox = document.createElement('input');
+    checkbox.type = "checkbox";
+    checkbox.value = 1;
+    checkbox.name = text.value;
+
+    label.appendChild(checkbox);
+
+    label.appendChild(document.createTextNode(text.value));
+    ul.appendChild(label);
+}
+var button = document.getElementById('btn');
+button.onclick = addItem
+
+
 
