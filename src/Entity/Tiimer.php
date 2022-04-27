@@ -23,7 +23,7 @@ class Tiimer
     #[ORM\Column(type: 'time')]
     private $endTime;
 
-    #[ORM\Column(type: 'datetime')]
+    #[ORM\Column(type: 'date')]
     private $date;
 
     #[ORM\Column(type: 'string', length: 255)]

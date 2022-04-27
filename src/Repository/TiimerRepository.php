@@ -45,6 +45,23 @@ class TiimerRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * @throws \Doctrine\DBAL\Exception
+     */
+    public function getTotalTimeOrdered(){
+//        $dql = 'SELECT (SUM(time_diff(end_time , start_time))) as TOTAL , `date`  FROM App\Entity\Tiimer t GROUP BY t.date';
+//        $query = $this->getEntityManager()->createQuery($dql);
+//        return $query->execute();
+
+        $sql = 'SELECT TIME_TO_SEC(SUM(TIMEDIFF(end_time , start_time))) as TOTAL , `date`  FROM ejemplo.tiimer t GROUP BY `date`;';
+
+        $entityManager = $this->getEntityManager();
+        $conn = $entityManager->getConnection();
+        return $conn->executeQuery($sql)->fetchAll();
+
+
+    }
+
     // /**
     //  * @return Tiimer[] Returns an array of Tiimer objects
     //  */

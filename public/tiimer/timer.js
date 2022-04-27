@@ -1,3 +1,4 @@
+
 const descForm = document.querySelector('.desc-form')
 const myBtns = document.querySelector('.my-btns');
 const errorMessage = document.querySelector('.error')
@@ -53,8 +54,9 @@ myBtns.addEventListener('click',(e)=>{
                     console.log(1)
                     myBtns.children[1].classList.remove('d-none')
                     myBtns.children[2].classList.add('d-none')
-                    const checkCurrtime = new Date();
-                    currentTime = checkCurrtime.toLocaleTimeString('es-ES', { timeZone: 'Europe/Madrid' });
+                    const checkCurrtime = new moment();
+                    // currentTime = checkCurrtime.toLocaleTimeString('es-ES', { timeZone: 'Europe/Madrid' });
+                    currentTime = checkCurrtime.format("HH:mm:ss");
                 }
                 else{
                 errorMessage.classList.remove('d-none')
@@ -82,8 +84,9 @@ myBtns.addEventListener('click',(e)=>{
         myBtns.children[1].classList.add('d-none')
         myBtns.children[2].classList.remove('d-none')
 
-        const checkEndtime = new Date();
-        EndTime = checkEndtime.toLocaleTimeString('es-ES', { timeZone: 'Europe/Madrid' });
+        const checkEndtime = new moment();
+        // EndTime = checkEndtime.toLocaleTimeString('es-ES', { hour12: true });
+        EndTime = checkEndtime.format("HH:mm:ss");
 
         document.querySelector(".popup").style.display = "block";
         document.getElementById("tiimer_startTime").value = currentTime;
@@ -127,8 +130,9 @@ let timeReamaining = () =>{
             myBtns.children[1].classList.add('d-none')
             myBtns.children[2].classList.remove('d-none')
 
-            const checkEndtime = new Date();
-            EndTime = checkEndtime.toLocaleTimeString('es-ES', { timeZone: 'Europe/Madrid' });
+            const checkEndtime = new moment();
+            // EndTime = checkEndtime.toLocaleTimeString('es-ES', { timeZone: 'Europe/Madrid' });
+            EndTime = checkEndtime.format("HH:mm:ss");
 
             document.querySelector(".popup").style.display = "block";
             document.getElementById("tiimer_startTime").value = currentTime;
@@ -206,24 +210,24 @@ let sessionTime = () =>{
 
 
 //Add item checkbox
-function addItem(){
-    var ul = document.getElementById('ul');
-    var label = document.createElement('label');
-
-    var text = document.getElementById('texto');
-
-    var checkbox = document.createElement('input');
-    checkbox.type = "checkbox";
-    checkbox.value = 1;
-    checkbox.name = text.value;
-
-    label.appendChild(checkbox);
-
-    label.appendChild(document.createTextNode(text.value));
-    ul.appendChild(label);
-}
-var button = document.getElementById('btn');
-button.onclick = addItem
+// function addItem(){
+//     var ul = document.getElementById('ul');
+//     var label = document.createElement('label');
+//
+//     var text = document.getElementById('texto');
+//
+//     var checkbox = document.createElement('input');
+//     checkbox.type = "checkbox";
+//     checkbox.value = 1;
+//     checkbox.name = text.value;
+//
+//     label.appendChild(checkbox);
+//
+//     label.appendChild(document.createTextNode(text.value));
+//     ul.appendChild(label);
+// }
+// var button = document.getElementById('btn');
+// button.onclick = addItem
 
 
 
