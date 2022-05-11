@@ -1,20 +1,86 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}Hello MainController!{% endblock %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Tiimer</title>
+    <meta name="description" content="Increase your productivity using Tiimer">
+    <link rel="stylesheet" href="main/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700&amp;display=swap">
+    <link rel="stylesheet" href="main/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="main/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="main/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="icon" href="stopwatch.svg">
+</head>
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77">
+<nav class="navbar navbar-light navbar-expand-md fixed-top" id="mainNav">
+    <div class="container"><a class="navbar-brand" href="/main"><i class="far fa-clock"></i>Tiimer</a><button data-bs-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item nav-link"><a class="nav-link active" href="#about">About</a></li>
+                <li class="nav-item nav-link"><a class="nav-link" href="/register">USE IT</a></li>
+                <li class="nav-item nav-link"><a class="nav-link" href="#contact">contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<header class="text-center masthead" >
+    <div class="intro-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto"><i class="far fa-clock" style="color: rgb(66,220,163);"></i>
+                    <h1 class="brand-heading" style="color: #42dca3;">TIIMER PRO</h1>
+                    <p class="intro-text" style="color: rgb(66,220,163);">Get FREE access now to increase your productivity now</p><a class="btn btn-link btn-circle" role="button" href="#about" style="color: #42dca3;"><i class="fa fa-angle-double-down animated"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<section class="text-center content-section" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2>About TIIMER</h2>
+                <p>If you want to do more in less time, your best option is Tiimer.</p>
+                <p>How?</p>
+                <p>Every time that you are working, track your time with you application to see the progress.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="text-center download-section content-section" id="download" >
+    <div class="container">
+        <div class="col-lg-8 mx-auto">
+            <h1>Use Tiimer</h1>
+            <button class="btn btn-primary btn-lg btn-default" type="button" href="/login">USE IT NOW</button>
+        </div>
+    </div>
+</section>
+<section class="text-center content-section" id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2>Contact us</h2>
+                <ul class="list-inline banner-social-buttons">
+                    <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i class="fa fa-google-plus fa-fw"></i><span class="network-name">&nbsp; Google+</span></button></li>
+                    <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i class="fa fa-twitter fa-fw"></i><span class="network-name">&nbsp;Twitter</span></button></li>
+                    <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i class="fa fa-github fa-fw"></i><span class="network-name">&nbsp;github</span></button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="map-clean"></div>
+<footer>
+    <div class="container text-center">
+        <p style="background: #42dca3;">Copyright ©&nbsp;TIIMER 2022</p>
+    </div>
+</footer>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/grayscale.js"></script>
+</body>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Adrian/Desktop/app-timer/src/Controller/MainController.php'|file_link(0) }}">src/Controller/MainController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Adrian/Desktop/app-timer/templates/main/index.html.twig'|file_link(0) }}">templates/main/index.html.twig</a></code></li>
-    </ul>
-</div>
-{% endblock %}
+</html>

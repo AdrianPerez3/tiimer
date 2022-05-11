@@ -94,12 +94,12 @@ myBtns.addEventListener('click',(e)=>{
         document.getElementById("tiimer_description").value = shortDesc;
 
 
-        let html = `
-        <div class="item my-4">
-            <h5 class="px-4 mb-2 pt-3" style="color: green;">${shortDesc}</h5>
-            <p class="px-4 fw-normal">${sessionTime()}</p>
-        </div>     `
-        completed.innerHTML += html
+        // let html = `
+        // <div class="item my-4">
+        //     <h5 class="px-4 mb-2 pt-3" style="color: green;">${shortDesc}</h5>
+        //     <p class="px-4 fw-normal">${sessionTime()}</p>
+        // </div>     `
+        // completed.innerHTML += html
         clearAll();
     }
 
@@ -140,12 +140,12 @@ let timeReamaining = () =>{
             document.getElementById("tiimer_description").value = shortDesc;
 
 
-            let html = `
-        <div class="item my-4">
-            <h5 class="px-4 mb-2 pt-3" style="color: green;">${shortDesc}</h5>
-            <p class="px-4 fw-normal">${sessionTime()}</p>
-        </div>     `
-            completed.innerHTML += html
+        //     let html = `
+        // <div class="item my-4">
+        //     <h5 class="px-4 mb-2 pt-3" style="color: green;">${shortDesc}</h5>
+        //     <p class="px-4 fw-normal">${sessionTime()}</p>
+        // </div>     `
+        //     completed.innerHTML += html
             clearAll();
     }
         seconds = 60;

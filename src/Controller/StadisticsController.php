@@ -20,7 +20,10 @@ class StadisticsController extends AbstractController
     {
 
         $repositorys = $entityManager->getRepository(Tiimer::class)->getTotalTimeOrdered();
+        $countByDates  = $entityManager->getRepository(Tiimer::class)->getCountbyDate();
 
+        $fechas = [];
+        $count = [];
         $dates = [];
         $total = [];
         foreach ($repositorys as $repository){
@@ -28,9 +31,15 @@ class StadisticsController extends AbstractController
             $total[] = $repository['TOTAL'];
         }
 
-        $chart = $chartBuilder->createChart(Chart::TYPE_LINE);
+        foreach ($countByDates as $countByDate){
+            $fechas[] = $countByDate['date'];
+            $count[] = $countByDate['count'];
+        }
 
-        $chart->setData([
+
+        $linea = $chartBuilder->createChart(Chart::TYPE_LINE);
+
+        $linea->setData([
             'labels' => $dates,
             'datasets' => [
                 [
@@ -42,7 +51,7 @@ class StadisticsController extends AbstractController
             ],
         ]);
 
-        $chart->setOptions([
+        $linea->setOptions([
             'scales' => [
                 'x'=>[
                     'min' => 0,
@@ -54,8 +63,35 @@ class StadisticsController extends AbstractController
                 ],
             ],
         ]);
-        return $this->render('stadistics/index.html.twig', [
-            'chart' => $chart,
+
+        $donut = $chartBuilder->createChart(Chart::TYPE_DOUGHNUT);
+
+        $donut->setData([
+            'labels' => $fechas,
+            'datasets' => [
+                [
+                    'label' => ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
+                    'backgroundColor' => ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'black', 'purple', 'brown', 'grey'],
+                    'borderColor' => 'rgb(255, 255, 255)',
+                    'data' => $count,
+                ],
+            ],
         ]);
+
+        $donut->setOptions([
+            'plugins'=>[
+                'title' => [
+                    'display'=>true,
+                    'text'=>'Trabajos realizados por dia'
+                ],
+            ]
+        ]);
+
+        return $this->render('stadistics/index.html.twig', [
+            'chart' => $linea,
+            'donut'=>$donut
+        ]);
+
     }
+
 }

@@ -13,31 +13,39 @@ R
 "public/login/assets/css/styles.css,b\4\b41a1f0a054d4244a0b2542096d7d3042a215a65
 T
 $migrations/Version20220420141808.php,5\2\527d7557d1b4e0b6931373f4eec1e7016becad6c
-C
-src/Entity/User.php,0\a\0a3e99b9da178509aeb5b3fa6f5dce46bc0eb8be
-Q
-!src/Form/RegistrationFormType.php,9\5\95d4b58438357928efb9c5a862a6d289d874e878
-W
-'src/Security/LoginFormAuthenticator.php,5\8\58103073fd1d1900e366a38250f7db278e4f59eb
-Y
-)templates/registration/register.html.twig,1\c\1c8c7e669830383faba8ed6ab3baf68e465540f5
-<
-package.json,7\0\7030d0b2f71b999ff89a343de08c414af32fc93a
 G
 public/tiimer/popUp.css,a\3\a3ef3fee95f349e6bd703e11410dff04edacd137
 E
 src/Entity/.gitignore,9\9\99674f20e48f39118d61ee9aa8e229f32192f333
-S
-#src/Controller/TiimerController.php,e\7\e7c886b4263757cdb60351f693503705cc5cd58c
 =
 assets/app.js,8\6\8651bd0a7d84f9f6460894ab6b5ff212648386c4
-9
-	yarn.lock,5\3\53585a096fe3a3b96321113856ae62602995a33b
 M
 config/packages/doctrine.yaml,8\4\8407b4a9f249ef233d425138c0e8540c756c614a
 4
 .env,3\c\3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
-P
- templates/tiimer/index.html.twig,7\7\77c4b4ae686d77fa0d51ef7aafae8e4c84de4572
+E
+assets/styles/app.css,5\8\58d82e459ad700473925afc6a4d3ceb1cbdfdf19
+E
+src/Entity/Tiimer.php,1\1\1145819adbf92fdaaccf3a658621616f15a196e4
+G
+public/tiimer/style.css,f\a\fafc50df199c6b8c937c378af6b338ce2057c137
+U
+%src/Controller/SecurityController.php,7\c\7cc876ecdb4df676c79a6188e9f3ac45e5079434
+F
+public/tiimer/timer.js,1\7\170d517a5d04c3d9bca1f92bf32775efb4b36044
 G
 src/Form/TiimerType.php,1\2\125c7d2061dead96d69ba96a67764f71d223b35d
+S
+#src/Controller/TiimerController.php,e\7\e7c886b4263757cdb60351f693503705cc5cd58c
+C
+src/Entity/User.php,0\a\0a3e99b9da178509aeb5b3fa6f5dce46bc0eb8be
+Y
+)src/Controller/RegistrationController.php,b\6\b6a5dce1eac6107738aa6c9b363b605aa2315b2c
+R
+"templates/security/login.html.twig,8\9\89d5f9595fc54c90b0c2626c3e5e07e23a679864
+9
+	yarn.lock,5\3\53585a096fe3a3b96321113856ae62602995a33b
+H
+templates/menu.html.twig,7\9\79f90f656523033bf56fd15339147cde360ca01a
+H
+templates/base.html.twig,f\f\ffb3f1cfd73fdec1f0c80c63d0b5bbc1fff22022

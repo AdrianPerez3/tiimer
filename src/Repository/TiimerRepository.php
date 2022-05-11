@@ -62,6 +62,16 @@ class TiimerRepository extends ServiceEntityRepository
 
     }
 
+
+    public function getCountbyDate(){
+        $sql = 'SELECT DISTINCT(date), COUNT(date) as count  FROM ejemplo.tiimer t GROUP BY date';
+
+        $entityManager = $this->getEntityManager();
+        $conn = $entityManager->getConnection();
+        return $conn->executeQuery($sql)->fetchAll();
+    }
+
+
     // /**
     //  * @return Tiimer[] Returns an array of Tiimer objects
     //  */

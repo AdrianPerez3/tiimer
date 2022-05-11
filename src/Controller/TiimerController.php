@@ -25,7 +25,8 @@ class TiimerController extends AbstractController
             $tiimer->setUser($this->getUser());
             $entityManager->persist($tiimer);
             $entityManager->flush();
-            return $this->redirect($request->getUri());
+//            return $this->redirect($request->getUri());
+            return $this->redirect('/stadistics');
 
         }
 

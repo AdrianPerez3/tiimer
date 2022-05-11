@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+    {% block menu %}{{include('menu.html.twig')}}{% endblock %}
+    <div class="container  align-items-center justify-content-center w-50 mt-5">
+        <h1>Hola, {{data.getName()}}</h1>
+        <p>Here you can edit you name and password</p>
+{#        {%if error != null%}#}
+{#            <div class="alert alert-danger" role="alert">#}
+{#                {{ fl }}#}
+{#            </div>#}
+{#        {%endif%}#}
+        {% for message in app.flashes('message') %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {{ form_start(editForm) }}
+        <section class="contact-clean">
+
+            <div class="mb-3">
+                {{ form_row(editForm.name, {'attr':{'class':'form-control'}}) }}
+            </div>
+            <div class="mb-3">
+                {{ form_row(editForm.password.first) }}
+            </div>
+            <div class="mb-3">
+                {{ form_row(editForm.password.second) }}
+            </div>
+            <div class="mb-3">
+                {{ form_row(editForm.Submit, {'attr':{'class':'btn btn-primary'}}) }}
+            </div>
+
+        </section>
+        {{ form_end(editForm) }}
+    </div>
+
+
+
+
+
+{% endblock %}
