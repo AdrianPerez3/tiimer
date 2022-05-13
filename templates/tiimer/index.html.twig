@@ -16,7 +16,7 @@
     <link rel="icon" href="stopwatch.svg">
 
 
-    <title>Tiimer</title>
+    <title id="tiempo">Tiimer</title>
 </head>
 <body>
 {#{% block menu %}{{include('menu.html.twig')}}{% endblock %}#}
@@ -77,7 +77,29 @@
 
 
 <div class="completed-list">
+    <div id="tasks-container">
+        <ul id="tasks"></ul>
+        <div id="add-task-btn">Add Task</div>
 
+        <form id="task-form" class="hide">
+            <input id="text" type="text" placeholder="What are you working on?">
+            <div id="btn-container">
+                <button id="save" type="submit">Save</button>
+                <button id="cancel" type="button">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <template id="list-item-template">
+        <li class="list-item">
+            <input type="checkbox">
+            <span class="task-name"></span>
+            <div class="right">
+                <span class="pomodoro-count"></span>
+                <span class="delete-btn">Delete</span>
+            </div>
+        </li>
+    </template>
 </div>
 
 <div class="popup">

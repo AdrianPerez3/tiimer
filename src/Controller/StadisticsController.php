@@ -24,17 +24,28 @@ class StadisticsController extends AbstractController
 
         $fechas = [];
         $count = [];
+
+
+
         $dates = [];
         $total = [];
+
+        $formato = 'd/m/Y';
         foreach ($repositorys as $repository){
-            $dates[] = $repository['date'];
+            $dates[] = date($formato,strtotime($repository['date']));
             $total[] = $repository['TOTAL'];
         }
 
         foreach ($countByDates as $countByDate){
-            $fechas[] = $countByDate['date'];
+            $fechas[] = date($formato,strtotime($countByDate['date']));
             $count[] = $countByDate['count'];
         }
+
+//        if (count($fechas) > 7 && count($count) > 7){
+//            unset($fechas[0], $count[0]);
+//        }
+
+//        dd($fechas, $count);
 
 
         $linea = $chartBuilder->createChart(Chart::TYPE_LINE);
@@ -71,7 +82,7 @@ class StadisticsController extends AbstractController
             'datasets' => [
                 [
                     'label' => ['Red', 'Orange', 'Yellow', 'Green', 'Blue'],
-                    'backgroundColor' => ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'black', 'purple', 'brown', 'grey'],
+                    'backgroundColor' => ['rgb(213, 241, 224)', 'rgb(147, 220, 175)', 'rgb(133, 144, 247)', 'rgb(151, 161, 249)', 'rgb(233, 218, 210)', 'rgb(244, 234, 228)', 'rgb(224, 187, 228)', 'rgb(149, 125, 173)', 'rgb(210, 145, 188)', 'rgb(254, 200, 216)', 'rgb(255, 223, 211)'],
                     'borderColor' => 'rgb(255, 255, 255)',
                     'data' => $count,
                 ],
@@ -79,6 +90,7 @@ class StadisticsController extends AbstractController
         ]);
 
         $donut->setOptions([
+            'responsive'=> true,
             'plugins'=>[
                 'title' => [
                     'display'=>true,

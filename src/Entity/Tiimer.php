@@ -29,6 +29,12 @@ class Tiimer
     #[ORM\Column(type: 'string', length: 255)]
     private $description;
 
+    #[ORM\Column(type: 'integer')]
+    private $checked;
+
+    #[ORM\Column(type: 'integer')]
+    private $unchecked;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -97,6 +103,30 @@ class Tiimer
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getChecked(): ?int
+    {
+        return $this->checked;
+    }
+
+    public function setChecked(int $checked): self
+    {
+        $this->checked = $checked;
+
+        return $this;
+    }
+
+    public function getUnchecked(): ?int
+    {
+        return $this->unchecked;
+    }
+
+    public function setUnchecked(int $unchecked): self
+    {
+        $this->unchecked = $unchecked;
 
         return $this;
     }

@@ -3,6 +3,7 @@ const descForm = document.querySelector('.desc-form')
 const myBtns = document.querySelector('.my-btns');
 const errorMessage = document.querySelector('.error')
 const remTime = document.querySelector('.remTime');
+const tiempoTitulo = document.getElementById('tiempo');
 const notice = document.querySelector('.noticeBoard')
 
 const completed = document.querySelector('.completed-list')
@@ -94,12 +95,6 @@ myBtns.addEventListener('click',(e)=>{
         document.getElementById("tiimer_description").value = shortDesc;
 
 
-        // let html = `
-        // <div class="item my-4">
-        //     <h5 class="px-4 mb-2 pt-3" style="color: green;">${shortDesc}</h5>
-        //     <p class="px-4 fw-normal">${sessionTime()}</p>
-        // </div>     `
-        // completed.innerHTML += html
         clearAll();
     }
 
@@ -114,18 +109,6 @@ let timeReamaining = () =>{
     if(seconds === 0){
         workMinutes = workMinutes - 1;
         if(workMinutes === -1){
-        //     if(breakcount % 2 === 0){
-        //         workMinutes = breakMinutes;
-        //         breakcount = breakcount + 1;
-        //         notice.innerText = `(Break Time)`
-        //
-        //     }else{
-        //         width = 1;
-        //         workMinutes = workDuration - 1;
-        //         breakcount = breakcount + 1;
-        //         notice.innerText = ' ';
-        //
-        // }
             myBtns.children[0].classList.add('d-none')
             myBtns.children[1].classList.add('d-none')
             myBtns.children[2].classList.remove('d-none')
@@ -139,20 +122,14 @@ let timeReamaining = () =>{
             document.getElementById("tiimer_endTime").value = EndTime;
             document.getElementById("tiimer_description").value = shortDesc;
 
-
-        //     let html = `
-        // <div class="item my-4">
-        //     <h5 class="px-4 mb-2 pt-3" style="color: green;">${shortDesc}</h5>
-        //     <p class="px-4 fw-normal">${sessionTime()}</p>
-        // </div>     `
-        //     completed.innerHTML += html
             clearAll();
     }
-        seconds = 60;
+        seconds = 0;
     }
 //Here we are rendring the change in time on the timer screen       
 let time = `${workMinutes<10? `0${workMinutes}`:workMinutes}:${seconds<10? `0${seconds}`:seconds}`
 remTime.innerText = time;
+    tiempoTitulo.innerText = time;
 }
 
 
@@ -198,6 +175,7 @@ let clearAll = () =>{
     progressBar1.style.width = 1 + '%'
     progressBar2.style.width = 1 + '%'
     remTime.textContent = `00:00`
+    tiempoTitulo.textContent = '00:00'
     notice.textContent = '';
     width = 1
 
@@ -207,6 +185,117 @@ let clearAll = () =>{
 let sessionTime = () =>{
     return `Session was started at ${currentTime} and ended at ${EndTime}`
 }
+
+
+//Task Functionality
+
+
+const addTaskBtn = document.getElementById('add-task-btn')
+const addTaskForm = document.getElementById('task-form')
+const cancelBtn = document.getElementById('cancel')
+const taskNameInput = document.getElementById('text')
+const saveBtn = document.getElementById('save')
+const tasksList = document.getElementById('tasks')
+const template = document.getElementById('list-item-template')
+const selectedTask = document.getElementById('selected-task')
+let tasks = []
+let selectedTaskElement
+
+var checked = 0;
+var unchecked = 0;
+
+// show/hide task form
+addTaskBtn.addEventListener('click', () => {
+    console.log();
+    addTaskForm.classList.toggle('hide')
+})
+
+// cancel task and close task form
+cancelBtn.addEventListener('click', () => {
+    taskNameInput.value = ""
+    addTaskForm.classList.add('hide')
+})
+
+// save task and add to the task object to the array and list
+saveBtn.addEventListener('click', e => {
+    e.preventDefault()
+
+    // get the inputs
+    const taskName = taskNameInput.value
+
+    // don't add task if a form element is blank or estimated pomodoros is <=0
+    if (taskName === "") return
+
+    // create new object
+    const newTask = {
+        name: taskName,
+        complete: false,
+        id: new Date().valueOf().toString()
+    }
+    // add task to array
+    tasks.push(newTask)
+    // render task
+    addTask(newTask)
+
+    // clear inputs
+    taskNameInput.value = ""
+})
+
+// event listener for the list item, checkbox and delete button
+document.addEventListener('click', e => {
+    // if a delete button is selected
+    if(e.target.matches('.delete-btn')) {
+        // find the list item associaited with the delete button and remove it
+        const listItem = e.target.closest('.list-item')
+        listItem.remove()
+
+        // find the id of the task to remove the task object from the array
+        const taskId = listItem.dataset.taskId
+        tasks = tasks.filter(task => task.id !== taskId )
+
+        // remove title when selected task is deleted
+        if (listItem === selectedTaskElement) {
+            selectedTask.innerHTML = ""
+        }
+    }
+    // if a list item is selected
+    if(e.target.matches('.list-item')) {
+        // set the task as the selected element and put title in selected-task div
+        selectedTaskElement = e.target
+    }
+    checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+    unchecked = document.querySelectorAll('input[type="checkbox"]').length;
+
+    console.log(checked, unchecked);
+
+
+
+    // if a checkbox is selected
+    if(e.target.matches('input[type=checkbox]')) {
+        // ge the list item and the id of the item
+        const listItem = e.target.closest('.list-item')
+        const taskId = listItem.dataset.taskId
+        // find the task object in the array
+        const checkedTask = tasks.find(task => task.id === taskId)
+        // if set to true, change to false, and if set to false, set to true
+        if(checkedTask.complete) checkedTask.complete = false
+        else if(!checkedTask.complete)checkedTask.complete = true
+    }
+})
+
+// add task as list item
+function addTask(task) {
+    const templateClone = template.content.cloneNode(true)
+    const listItem = templateClone.querySelector('.list-item')
+    listItem.dataset.taskId = task.id
+    const checkbox = templateClone.querySelector('input[type=checkbox]')
+    checkbox.checked = task.complete
+    const taskName = templateClone.querySelector('.task-name')
+    taskName.innerHTML = task.name
+    tasksList.appendChild(templateClone)
+
+}
+
 
 
 //Add item checkbox
