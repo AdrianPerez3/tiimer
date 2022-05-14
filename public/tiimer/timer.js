@@ -1,10 +1,10 @@
-
 const descForm = document.querySelector('.desc-form')
 const myBtns = document.querySelector('.my-btns');
 const errorMessage = document.querySelector('.error')
 const remTime = document.querySelector('.remTime');
 const tiempoTitulo = document.getElementById('tiempo');
 const notice = document.querySelector('.noticeBoard')
+let liElements = 0;
 
 const completed = document.querySelector('.completed-list')
 
@@ -12,6 +12,8 @@ document.getElementById('tiimer_date').valueAsDate = new Date();
 document.getElementById('tiimer_date').setAttribute("readonly", "true");
 document.getElementById('tiimer_startTime').setAttribute("readonly", "true");
 document.getElementById('tiimer_endTime').setAttribute("readonly", "true");
+document.getElementById('tiimer_checked').setAttribute("readonly", "true");
+document.getElementById('tiimer_unchecked').setAttribute("readonly", "true");
 
 
 let workDuration = descForm.workTime.value;
@@ -46,53 +48,66 @@ let width = 0;
 
 
 
-myBtns.addEventListener('click',(e)=>{
-    if(e.target.classList.contains('start')){
-        if(workDuration !== '0' && workDuration !==''){
-                if(shortDesc !== ''){
-                    myIntervals();
-                    disabling();
-                    console.log(1)
-                    myBtns.children[1].classList.remove('d-none')
-                    myBtns.children[2].classList.add('d-none')
-                    const checkCurrtime = new moment();
-                    // currentTime = checkCurrtime.toLocaleTimeString('es-ES', { timeZone: 'Europe/Madrid' });
-                    currentTime = checkCurrtime.format("HH:mm:ss");
-                }
-                else{
+myBtns.addEventListener('click',async (e) => {
+    if (e.target.classList.contains('start')) {
+        if (workDuration !== '0' && workDuration !== '') {
+            if (shortDesc !== '') {
+                myIntervals();
+                disabling();
+                console.log(1)
+                myBtns.children[1].classList.remove('d-none')
+                myBtns.children[2].classList.add('d-none')
+                const checkCurrtime = new moment();
+                // currentTime = checkCurrtime.toLocaleTimeString('es-ES', { timeZone: 'Europe/Madrid' });
+                currentTime = checkCurrtime.format("HH:mm:ss");
+            } else {
                 errorMessage.classList.remove('d-none')
-                }
+            }
 
-        }
-        else{
+        } else {
             errorMessage.classList.remove('d-none')
         }
-            
-        }
-    else if(e.target.classList.contains('pause')){
+
+    } else if (e.target.classList.contains('pause')) {
         clearInterval(timer1);
         clearInterval(timer2)
         myBtns.children[1].classList.add('d-none')
         myBtns.children[0].classList.remove('d-none')
-    }
-    else if(e.target.classList.contains('resume')){
+    } else if (e.target.classList.contains('resume')) {
         myIntervals();
         myBtns.children[0].classList.add('d-none')
         myBtns.children[1].classList.remove('d-none')
-    }
-    else if(e.target.classList.contains('stop')){
+    } else if (e.target.classList.contains('stop')) {
         myBtns.children[0].classList.add('d-none')
         myBtns.children[1].classList.add('d-none')
         myBtns.children[2].classList.remove('d-none')
+
+
+
+        document.getElementById('tasks').innerHTML = "";
 
         const checkEndtime = new moment();
         // EndTime = checkEndtime.toLocaleTimeString('es-ES', { hour12: true });
         EndTime = checkEndtime.format("HH:mm:ss");
 
+        const {value: formValues} = await Swal.fire({
+            title: 'Select you objectives',
+            html:
+            document.getElementById('tasksForm').innerHTML,
+            focusConfirm: false,
+
+
+        })
+
+        checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+        unchecked = document.querySelectorAll('input[type="checkbox"]').length - liElements -1;
+
         document.querySelector(".popup").style.display = "block";
         document.getElementById("tiimer_startTime").value = currentTime;
         document.getElementById("tiimer_endTime").value = EndTime;
         document.getElementById("tiimer_description").value = shortDesc;
+        document.getElementById("tiimer_checked").value = checked;
+        document.getElementById("tiimer_unchecked").value = unchecked;
 
 
         clearAll();
@@ -104,31 +119,47 @@ myBtns.addEventListener('click',(e)=>{
 
 
 //fucntion, which is for showing the remaining time to user
-let timeReamaining = () =>{
+let timeReamaining = async () => {
     seconds = seconds - 1;
-    if(seconds === 0){
+    if (seconds === 0) {
         workMinutes = workMinutes - 1;
-        if(workMinutes === -1){
+        if (workMinutes === -1) {
             myBtns.children[0].classList.add('d-none')
             myBtns.children[1].classList.add('d-none')
             myBtns.children[2].classList.remove('d-none')
+
+
 
             const checkEndtime = new moment();
             // EndTime = checkEndtime.toLocaleTimeString('es-ES', { timeZone: 'Europe/Madrid' });
             EndTime = checkEndtime.format("HH:mm:ss");
 
+            const {value: formValues} = await Swal.fire({
+                title: 'Select you objectives',
+                html:
+                document.getElementById('tasksForm').innerHTML,
+                focusConfirm: false,
+
+
+            })
+
+            checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            unchecked = document.querySelectorAll('input[type="checkbox"]').length - liElements - 1;
+
             document.querySelector(".popup").style.display = "block";
             document.getElementById("tiimer_startTime").value = currentTime;
             document.getElementById("tiimer_endTime").value = EndTime;
             document.getElementById("tiimer_description").value = shortDesc;
+            document.getElementById("tiimer_checked").value = checked;
+            document.getElementById("tiimer_unchecked").value = unchecked;
 
             clearAll();
-    }
+        }
         seconds = 0;
     }
 //Here we are rendring the change in time on the timer screen       
-let time = `${workMinutes<10? `0${workMinutes}`:workMinutes}:${seconds<10? `0${seconds}`:seconds}`
-remTime.innerText = time;
+    let time = `${workMinutes < 10 ? `0${workMinutes}` : workMinutes}:${seconds < 10 ? `0${seconds}` : seconds}`
+    remTime.innerText = time;
     tiempoTitulo.innerText = time;
 }
 
@@ -196,7 +227,9 @@ const cancelBtn = document.getElementById('cancel')
 const taskNameInput = document.getElementById('text')
 const saveBtn = document.getElementById('save')
 const tasksList = document.getElementById('tasks')
+const tasksListForm = document.getElementById('tasksForm')
 const template = document.getElementById('list-item-template')
+const templateForm = document.getElementById('list-item-template-form')
 const selectedTask = document.getElementById('selected-task')
 let tasks = []
 let selectedTaskElement
@@ -206,7 +239,6 @@ var unchecked = 0;
 
 // show/hide task form
 addTaskBtn.addEventListener('click', () => {
-    console.log();
     addTaskForm.classList.toggle('hide')
 })
 
@@ -234,6 +266,7 @@ saveBtn.addEventListener('click', e => {
     }
     // add task to array
     tasks.push(newTask)
+
     // render task
     addTask(newTask)
 
@@ -247,7 +280,9 @@ document.addEventListener('click', e => {
     if(e.target.matches('.delete-btn')) {
         // find the list item associaited with the delete button and remove it
         const listItem = e.target.closest('.list-item')
+        const listItemForm = e.target.closest('.list-item-form')
         listItem.remove()
+        listItemForm.remove()
 
         // find the id of the task to remove the task object from the array
         const taskId = listItem.dataset.taskId
@@ -263,8 +298,8 @@ document.addEventListener('click', e => {
         // set the task as the selected element and put title in selected-task div
         selectedTaskElement = e.target
     }
-    checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
-    unchecked = document.querySelectorAll('input[type="checkbox"]').length;
+    // checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+    // unchecked = document.querySelectorAll('input[type="checkbox"]').length;
 
     console.log(checked, unchecked);
 
@@ -274,49 +309,42 @@ document.addEventListener('click', e => {
     if(e.target.matches('input[type=checkbox]')) {
         // ge the list item and the id of the item
         const listItem = e.target.closest('.list-item')
-        const taskId = listItem.dataset.taskId
+        // const taskId = listItem.dataset.taskId
         // find the task object in the array
-        const checkedTask = tasks.find(task => task.id === taskId)
+        // const checkedTask = tasks.find(task => task.id === taskId)
         // if set to true, change to false, and if set to false, set to true
-        if(checkedTask.complete) checkedTask.complete = false
-        else if(!checkedTask.complete)checkedTask.complete = true
+        // if(checkedTask.complete) checkedTask.complete = false
+        // else if(!checkedTask.complete)checkedTask.complete = true
     }
 })
 
 // add task as list item
 function addTask(task) {
     const templateClone = template.content.cloneNode(true)
+    const templateCloneForm = templateForm.content.cloneNode(true)
     const listItem = templateClone.querySelector('.list-item')
+    const listItemForm = templateCloneForm.querySelector('.list-item-form')
     listItem.dataset.taskId = task.id
-    const checkbox = templateClone.querySelector('input[type=checkbox]')
-    checkbox.checked = task.complete
+    listItemForm.dataset.taskId = task.id
+
+    // const checkbox = templateClone.querySelector('input[type=checkbox]')
+    // checkbox.checked = task.complete
     const taskName = templateClone.querySelector('.task-name')
+    const taskNameForm = templateCloneForm.querySelector('.task-name-form')
+
     taskName.innerHTML = task.name
+    taskNameForm.innerHTML = task.name
+
     tasksList.appendChild(templateClone)
+    tasksListForm.appendChild(templateCloneForm)
+    liElements = document.getElementById("tasks").getElementsByTagName("li").length;
+
 
 }
 
 
 
-//Add item checkbox
-// function addItem(){
-//     var ul = document.getElementById('ul');
-//     var label = document.createElement('label');
-//
-//     var text = document.getElementById('texto');
-//
-//     var checkbox = document.createElement('input');
-//     checkbox.type = "checkbox";
-//     checkbox.value = 1;
-//     checkbox.name = text.value;
-//
-//     label.appendChild(checkbox);
-//
-//     label.appendChild(document.createTextNode(text.value));
-//     ul.appendChild(label);
-// }
-// var button = document.getElementById('btn');
-// button.onclick = addItem
+
 
 
 

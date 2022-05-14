@@ -79,6 +79,7 @@
 <div class="completed-list">
     <div id="tasks-container">
         <ul id="tasks"></ul>
+        <ul id="tasksForm" hidden></ul>
         <div id="add-task-btn">Add Task</div>
 
         <form id="task-form" class="hide">
@@ -92,15 +93,22 @@
 
     <template id="list-item-template">
         <li class="list-item">
-            <input type="checkbox">
             <span class="task-name"></span>
-            <div class="right">
+            {#<div class="right">
                 <span class="pomodoro-count"></span>
                 <span class="delete-btn">Delete</span>
-            </div>
+            </div>#}
+        </li>
+    </template>
+    <template id="list-item-template-form">
+        <li class="list-item-form">
+            <input type="checkbox">
+            <span class="task-name-form"></span>
         </li>
     </template>
 </div>
+
+
 
 <div class="popup">
     <h2>Tiimer Results</h2>
@@ -109,9 +117,15 @@
         {{ form_widget(tiimerForm.endTime, {'attr':{'class':'workDur p-2 mx-1', 'id':'endTime'}}) }}
         {{ form_widget(tiimerForm.date, {'attr':{'class':'workDur p-2 mx-1', 'id':'date'}}) }}
         {{ form_widget(tiimerForm.description, {'attr':{'class':'workDur p-2 mx-1', 'id':'description'}}) }}
+        {{ form_widget(tiimerForm.checked, {'attr':{'class':'workDur p-2 mx-1', 'id':'checked'}}) }}
+        {{ form_widget(tiimerForm.unchecked, {'attr':{'class':'workDur p-2 mx-1', 'id':'unchecked'}}) }}
         {{ form_widget(tiimerForm.Submit, { 'label': 'Send', 'class':'btn btn-primary d-block w-100'}) }}
 
     {{ form_end(tiimerForm) }}
+
+    <div id="objective">
+
+    </div>
 
 {#    <form method="post" class="desc-form d-flex justify-content-center">#}
 {#        <input id="startTime" type="time" name="startTime" class="workDur p-2 mx-1"  step="1">#}
@@ -124,6 +138,7 @@
 </div>
 
 <script src="tiimer/timer.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.14/dist/sweetalert2.all.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone.min.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 

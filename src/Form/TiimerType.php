@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Tiimer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
@@ -38,6 +39,9 @@ class TiimerType extends AbstractType
             ->add('description', TextType::class, [
                 'row_attr' => ['class' => 'workDur p-2 mx-1', 'id' => 'description']
             ])
+            ->add('checked', IntegerType::class, [])
+            ->add('unchecked', IntegerType::class, [])
+
             ->add('Submit', SubmitType::class, [
                 'attr' => ['class' => 'btn btn-primary d-block w-100']
             ])
