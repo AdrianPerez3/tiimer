@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Tiimer;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -48,12 +49,12 @@ class TiimerRepository extends ServiceEntityRepository
     /**
      * @throws \Doctrine\DBAL\Exception
      */
-    public function getTotalTimeOrdered(){
+    public function getTotalTimeOrdered(User $user){
 //        $dql = 'SELECT (SUM(time_diff(end_time , start_time))) as TOTAL , `date`  FROM App\Entity\Tiimer t GROUP BY t.date';
 //        $query = $this->getEntityManager()->createQuery($dql);
 //        return $query->execute();
 
-        $sql = 'SELECT TIME_TO_SEC(SUM(TIMEDIFF(end_time , start_time))) as TOTAL , `date`  FROM ejemplo.tiimer t GROUP BY `date`;';
+        $sql = 'SELECT TIME_TO_SEC(SUM(TIMEDIFF(end_time , start_time))) as TOTAL , `date`  FROM ejemplo.tiimer t  WHERE t.iduser = '.$user->getId().' GROUP BY `date`;';
 
         $entityManager = $this->getEntityManager();
         $conn = $entityManager->getConnection();
@@ -63,8 +64,24 @@ class TiimerRepository extends ServiceEntityRepository
     }
 
 
-    public function getCountbyDate(){
-        $sql = 'SELECT DISTINCT(date), COUNT(date) as count  FROM ejemplo.tiimer t GROUP BY date';
+    public function getCountbyDate(User $user){
+        $sql = 'SELECT DISTINCT(date), COUNT(date) as count  FROM ejemplo.tiimer t WHERE t.iduser = '.$user->getId().' GROUP BY date';
+
+        $entityManager = $this->getEntityManager();
+        $conn = $entityManager->getConnection();
+        return $conn->executeQuery($sql)->fetchAll();
+    }
+
+    public function getCheckedByDate(User $user){
+        $sql = 'SELECT DISTINCT(`date`), SUM(checked) as checked FROM ejemplo.tiimer t WHERE t.iduser = '.$user->getId().' GROUP BY date';
+
+        $entityManager = $this->getEntityManager();
+        $conn = $entityManager->getConnection();
+        return $conn->executeQuery($sql)->fetchAll();
+    }
+
+    public function getUncheckedByDate(User $user){
+        $sql = 'SELECT DISTINCT(`date`), SUM(unchecked) as unchecked FROM ejemplo.tiimer t WHERE t.iduser = '.$user->getId().' GROUP BY date';
 
         $entityManager = $this->getEntityManager();
         $conn = $entityManager->getConnection();

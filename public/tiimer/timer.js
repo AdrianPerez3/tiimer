@@ -77,7 +77,7 @@ myBtns.addEventListener('click',async (e) => {
         myIntervals();
         myBtns.children[0].classList.add('d-none')
         myBtns.children[1].classList.remove('d-none')
-    } else if (e.target.classList.contains('stop')) {
+    } else if (e.target.classList.contains('stop')&& workDuration > 0) {
         myBtns.children[0].classList.add('d-none')
         myBtns.children[1].classList.add('d-none')
         myBtns.children[2].classList.remove('d-none')
@@ -90,17 +90,22 @@ myBtns.addEventListener('click',async (e) => {
         // EndTime = checkEndtime.toLocaleTimeString('es-ES', { hour12: true });
         EndTime = checkEndtime.format("HH:mm:ss");
 
-        const {value: formValues} = await Swal.fire({
-            title: 'Select you objectives',
-            html:
-            document.getElementById('tasksForm').innerHTML,
-            focusConfirm: false,
+        if (document.querySelectorAll('input[type="checkbox"]').length > 0){
+            const {value: formValues} = await Swal.fire({
+                title: 'Select you objectives',
+                html:
+                document.getElementById('tasksForm').innerHTML,
+                focusConfirm: false,
 
 
-        })
+            })
+            checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            unchecked = document.querySelectorAll('input[type="checkbox"]').length - liElements -1;
 
-        checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
-        unchecked = document.querySelectorAll('input[type="checkbox"]').length - liElements -1;
+        }
+
+
+
 
         document.querySelector(".popup").style.display = "block";
         document.getElementById("tiimer_startTime").value = currentTime;
@@ -134,17 +139,20 @@ let timeReamaining = async () => {
             // EndTime = checkEndtime.toLocaleTimeString('es-ES', { timeZone: 'Europe/Madrid' });
             EndTime = checkEndtime.format("HH:mm:ss");
 
-            const {value: formValues} = await Swal.fire({
-                title: 'Select you objectives',
-                html:
-                document.getElementById('tasksForm').innerHTML,
-                focusConfirm: false,
+            if (document.querySelectorAll('input[type="checkbox"]').length > 0){
+                const {value: formValues} = await Swal.fire({
+                    title: 'Select you objectives',
+                    html:
+                    document.getElementById('tasksForm').innerHTML,
+                    focusConfirm: false,
 
 
-            })
+                })
+                checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+                unchecked = document.querySelectorAll('input[type="checkbox"]').length - liElements -1;
 
-            checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
-            unchecked = document.querySelectorAll('input[type="checkbox"]').length - liElements - 1;
+            }
+
 
             document.querySelector(".popup").style.display = "block";
             document.getElementById("tiimer_startTime").value = currentTime;

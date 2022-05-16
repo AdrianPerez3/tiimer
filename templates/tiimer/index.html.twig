@@ -78,8 +78,10 @@
 
 <div class="completed-list">
     <div id="tasks-container">
-        <ul id="tasks"></ul>
-        <ul id="tasksForm" hidden></ul>
+        <ol id="tasks">
+            <h3>Pending tasks</h3>
+        </ol>
+        <ol id="tasksForm" hidden></ol>
         <div id="add-task-btn">Add Task</div>
 
         <form id="task-form" class="hide">
@@ -113,12 +115,24 @@
 <div class="popup">
     <h2>Tiimer Results</h2>
     {{ form_start(tiimerForm) }}
-        {{ form_widget(tiimerForm.startTime, {'attr':{'class':'workDur p-2 mx-1', 'id':'startTime'}}) }}
-        {{ form_widget(tiimerForm.endTime, {'attr':{'class':'workDur p-2 mx-1', 'id':'endTime'}}) }}
-        {{ form_widget(tiimerForm.date, {'attr':{'class':'workDur p-2 mx-1', 'id':'date'}}) }}
-        {{ form_widget(tiimerForm.description, {'attr':{'class':'workDur p-2 mx-1', 'id':'description'}}) }}
-        {{ form_widget(tiimerForm.checked, {'attr':{'class':'workDur p-2 mx-1', 'id':'checked'}}) }}
-        {{ form_widget(tiimerForm.unchecked, {'attr':{'class':'workDur p-2 mx-1', 'id':'unchecked'}}) }}
+        <label for="startTime">Start Time</label><br>
+        {{ form_widget(tiimerForm.startTime, {'attr':{'class':'workDur p-2 mx-1', 'id':'startTime'}}) }}<br>
+
+        <label for="endTime">End Time</label><br>
+        {{ form_widget(tiimerForm.endTime, {'attr':{'class':'workDur p-2 mx-1', 'id':'endTime'}}) }}<br>
+
+        <label for="date">Date</label><br>
+        {{ form_widget(tiimerForm.date, {'attr':{'class':'workDur p-2 mx-1', 'id':'date'}}) }}<br>
+
+        <label for="description">Work Description</label><br>
+        {{ form_widget(tiimerForm.description, {'attr':{'class':'workDur p-2 mx-1', 'id':'description'}}) }}<br>
+
+        <label for="checked">Work Done</label><br>
+        {{ form_widget(tiimerForm.checked, {'attr':{'class':'workDur p-2 mx-1', 'id':'checked'}}) }}<br>
+
+        <label for="unchecked">Total work</label><br>
+        {{ form_widget(tiimerForm.unchecked, {'attr':{'class':'workDur p-2 mx-1', 'id':'unchecked'}}) }}<br>
+
         {{ form_widget(tiimerForm.Submit, { 'label': 'Send', 'class':'btn btn-primary d-block w-100'}) }}
 
     {{ form_end(tiimerForm) }}
