@@ -93,8 +93,7 @@ myBtns.addEventListener('click',async (e) => {
         if (document.querySelectorAll('input[type="checkbox"]').length > 0){
             const {value: formValues} = await Swal.fire({
                 title: 'Select you objectives',
-                html:
-                document.getElementById('tasksForm').innerHTML,
+                html:'<ol>' +  document.getElementById('tasksForm').innerHTML + '</ol>',
                 focusConfirm: false,
 
 
@@ -142,8 +141,7 @@ let timeReamaining = async () => {
             if (document.querySelectorAll('input[type="checkbox"]').length > 0){
                 const {value: formValues} = await Swal.fire({
                     title: 'Select you objectives',
-                    html:
-                    document.getElementById('tasksForm').innerHTML,
+                    html:'ol' +  document.getElementById('tasksForm').innerHTML + 'ol',
                     focusConfirm: false,
 
 

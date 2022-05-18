@@ -69,12 +69,12 @@ class StadisticsController extends AbstractController
                     [
                         'label'=>'Done',
                         'data'=>$checked,
-                        'backgroundColor'=>['rgb(213, 241, 224)', 'rgb(147, 220, 175)', 'rgb(133, 144, 247)', 'rgb(151, 161, 249)', 'rgb(233, 218, 210)', 'rgb(244, 234, 228)', 'rgb(224, 187, 228)', 'rgb(149, 125, 173)', 'rgb(210, 145, 188)', 'rgb(254, 200, 216)', 'rgb(255, 223, 211)'],
+                        'backgroundColor'=>['rgb(255,105,97)'],
                     ],
                     [
                         'label'=>'Total',
                         'data'=>$unchecked,
-                        'backgroundColor'=>['rgb(213, 241, 224)', 'rgb(147, 220, 175)', 'rgb(133, 144, 247)', 'rgb(151, 161, 249)', 'rgb(233, 218, 210)', 'rgb(244, 234, 228)', 'rgb(224, 187, 228)', 'rgb(149, 125, 173)', 'rgb(210, 145, 188)', 'rgb(254, 200, 216)', 'rgb(255, 223, 211)'],
+                        'backgroundColor'=>['rgb(167, 199, 231)'],
                     ]
                 ]
         ]);

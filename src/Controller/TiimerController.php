@@ -38,4 +38,30 @@ class TiimerController extends AbstractController
 
             ]);
     }
+
+    #[Route('/tiimer/form', name: 'app_tiimer_form')]
+    public function tiimerForm(Request $request, EntityManagerInterface $entityManager): Response
+    {
+
+        $tiimer = new Tiimer();
+        $form = $this->createForm(TiimerType::class, $tiimer);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $tiimer->setUser($this->getUser());
+            $entityManager->persist($tiimer);
+            $entityManager->flush();
+//            return $this->redirect($request->getUri());
+            return $this->redirect('/stadistics');
+
+        }
+
+
+
+
+        return $this->render('tiimer/form.html.twig', [
+            "tiimerForm"=>$form->createView()
+
+        ]);
+    }
 }

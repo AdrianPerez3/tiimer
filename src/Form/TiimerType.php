@@ -43,7 +43,7 @@ class TiimerType extends AbstractType
             ->add('unchecked', IntegerType::class, [])
 
             ->add('Submit', SubmitType::class, [
-                'attr' => ['class' => 'btn btn-primary d-block w-100']
+                'attr' => ['class' => 'btn btn-primary']
             ])
         ;
     }
