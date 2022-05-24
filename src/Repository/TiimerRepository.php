@@ -54,7 +54,7 @@ class TiimerRepository extends ServiceEntityRepository
 //        $query = $this->getEntityManager()->createQuery($dql);
 //        return $query->execute();
 
-        $sql = 'SELECT TIME_TO_SEC(SUM(TIMEDIFF(end_time , start_time))) as TOTAL , `date`  FROM ejemplo.tiimer t  WHERE t.iduser = '.$user->getId().' GROUP BY `date`;';
+        $sql = 'SELECT SUM(TIMEDIFF(end_time , start_time)) as TOTAL , `date`  FROM ejemplo.tiimer t  WHERE t.iduser = '.$user->getId().' GROUP BY `date`;';
 
         $entityManager = $this->getEntityManager();
         $conn = $entityManager->getConnection();
@@ -90,6 +90,46 @@ class TiimerRepository extends ServiceEntityRepository
 
     public function getTable(User $user){
         $sql = 'SELECT start_time, end_time, TIMEDIFF(end_time , start_time) as Total,  `date`, description  FROM ejemplo.tiimer t WHERE t.iduser = '.$user->getId().' ORDER BY `date` DESC LIMIT 10';
+
+        $entityManager = $this->getEntityManager();
+        $conn = $entityManager->getConnection();
+        return $conn->executeQuery($sql)->fetchAll();
+    }
+
+    public function getCountCheckedOfLast30Days(User $user){
+        $sql = 'SELECT SUM(checked) as Checked, SUM(unchecked) as Unchecked FROM ejemplo.tiimer t WHERE t.iduser = '.$user->getId().' and (DATE(NOW()) - INTERVAL 30 DAY)';
+
+        $entityManager = $this->getEntityManager();
+        $conn = $entityManager->getConnection();
+        return $conn->executeQuery($sql)->fetchAll();
+    }
+
+    public function getTotalTime(User $user){
+        $sql = 'SELECT SUM(TIMEDIFF(end_time , start_time)) as TOTAL FROM ejemplo.tiimer t WHERE t.iduser = '.$user->getId().';';
+
+        $entityManager = $this->getEntityManager();
+        $conn = $entityManager->getConnection();
+        return $conn->executeQuery($sql)->fetchAll();
+    }
+
+    public function getAllChecked(User $user){
+        $sql = 'SELECT SUM(checked) as Checked, SUM(unchecked) as Unchecked FROM ejemplo.tiimer t WHERE t.iduser = '.$user->getId().';';
+
+        $entityManager = $this->getEntityManager();
+        $conn = $entityManager->getConnection();
+        return $conn->executeQuery($sql)->fetchAll();
+    }
+
+    public function getDayMoreActivity(User $user){
+        $sql = 'SELECT COUNT(`date`), `date` FROM ejemplo.tiimer t WHERE t.iduser = '.$user->getId().' GROUP BY `date` LIMIT 1;';
+
+        $entityManager = $this->getEntityManager();
+        $conn = $entityManager->getConnection();
+        return $conn->executeQuery($sql)->fetchAll();
+    }
+
+    public function getBestUser(){
+        $sql = 'SELECT COUNT(`idUser`), `idUser` FROM ejemplo.tiimer t GROUP BY `idUser` LIMIT 1;';
 
         $entityManager = $this->getEntityManager();
         $conn = $entityManager->getConnection();

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}More Stats{% endblock %}
+
+{% block body %}
+    {% block menu %}{{include('menu.html.twig')}}{% endblock %}
+    <div class="container pt-5">
+        <div class="row ">
+            <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                    <div class="card-header text-center">Work done last 30 days</div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{ statChecked }}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                    <div class="card-header text-center">Efectivity work done</div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{ totalWorkDone| number_format(2) }}%</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                    <div class="card-header text-center">Total time done</div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{ totalTime }}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-5">
+            <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                    <div class="card-header text-center">Total work planed last 30 days</div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{ statUnchecked }}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                    <div class="card-header text-center">Day with more activity</div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{ getDayMoreActivity|date("m/d/Y") }}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                    <div class="card-header text-center">Best User</div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{ getBestUser }}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

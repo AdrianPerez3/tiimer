@@ -23,8 +23,6 @@ E
 assets/styles/app.css,5\8\58d82e459ad700473925afc6a4d3ceb1cbdfdf19
 U
 %src/Controller/SecurityController.php,7\c\7cc876ecdb4df676c79a6188e9f3ac45e5079434
-C
-src/Entity/User.php,0\a\0a3e99b9da178509aeb5b3fa6f5dce46bc0eb8be
 Y
 )src/Controller/RegistrationController.php,b\6\b6a5dce1eac6107738aa6c9b363b605aa2315b2c
 R
@@ -33,8 +31,6 @@ R
 	yarn.lock,5\3\53585a096fe3a3b96321113856ae62602995a33b
 A
 package-lock.json,f\a\fa288d1472d29beccb489a676f68739ad365fc47
-=
-composer.json,3\9\3957b91a0d8450cea0115cfd5af69eac90d75897
 <
 symfony.lock,e\1\e17766cca3407ba620a8cef1c14d37208a74e8a4
 L
@@ -49,5 +45,21 @@ T
 $src/Controller/ProfileController.php,1\2\12a35d23b3c5dd69aeaae65dfd71813f4731d870
 L
 src/Form/EditProfileType.php,4\d\4db6f4faeaa4b757f9b523e6d5daf915b7a4fd02
-E
-src/Entity/Tiimer.php,1\1\1145819adbf92fdaaccf3a658621616f15a196e4
+4
+.env,3\c\3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
+D
+config/services.yaml,8\7\87042d1f46b57381244d70e7a42feeb7710727dc
+B
+config/routes.yaml,b\a\baef02989dedf0ec859f7bce087a69f29bef2b72
+B
+config/preload.php,5\7\57f539ca2492dde303b2e757baaa84418aca539f
+B
+config/bundles.php,f\a\fa9a09a4e1ae4281250526d3dec214138beb5735
+Z
+*templates/table_stadistics/index.html.twig,e\a\ea79ae13617afbbabe50d6a3d6d447250ddcf7c4
+G
+public/tiimer/popUp.css,a\3\a3ef3fee95f349e6bd703e11410dff04edacd137
+G
+src/Form/TiimerType.php,1\2\125c7d2061dead96d69ba96a67764f71d223b35d
+=
+composer.json,3\9\3957b91a0d8450cea0115cfd5af69eac90d75897

@@ -89,8 +89,15 @@ class StadisticsController extends AbstractController
                     'display'=>true,
                     'text'=>'Work Done Vs. Total'
                 ]
-            ]
+            ],
+            'scales' => [
+                'x'=>[
+                    'min' => 0,
+                    'max' => 10,
+                ],
+            ],
         ]);
+
 
 
         $linea = $chartBuilder->createChart(Chart::TYPE_LINE);

@@ -8,14 +8,14 @@
 
     <div class=”container-fluid” style="background-color: white">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6">{{ render_chart(chart) }}</div>
-                <div class="col-md-6">{{ render_chart(donut) }}</div>
+            <div class="row d-flex justify-content-center">
+                <div class="w-75">{{ render_chart(chart) }}</div>
             </div>
-            <div class="row">
-                <div class="col-md-6">{{ render_chart(barchar) }}</div>
-                <div class="col-md-6">{{ render_chart(barchar) }}</div>
-
+            <div class="row d-flex justify-content-center">
+                <div class="w-50">{{ render_chart(donut) }}</div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="w-75">{{ render_chart(barchar) }}</div>
             </div>
         </div>
     </div>

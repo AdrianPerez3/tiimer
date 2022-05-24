@@ -43,6 +43,7 @@ security:
          - { path: ^/tiimer, roles: ROLE_USER }
          - { path: ^/stadistics, roles: ROLE_USER }
          - { path: ^/table, roles: ROLE_USER }
+         - { path: ^/stats , roles: ROLE_USER }
 
 
 when@test:

@@ -54,7 +54,6 @@ myBtns.addEventListener('click',async (e) => {
             if (shortDesc !== '') {
                 myIntervals();
                 disabling();
-                console.log(1)
                 myBtns.children[1].classList.remove('d-none')
                 myBtns.children[2].classList.add('d-none')
                 const checkCurrtime = new moment();
@@ -91,6 +90,8 @@ myBtns.addEventListener('click',async (e) => {
         EndTime = checkEndtime.format("HH:mm:ss");
 
         if (document.querySelectorAll('input[type="checkbox"]').length > 0){
+            clearAll();
+
             const {value: formValues} = await Swal.fire({
                 title: 'Select you objectives',
                 html:'<ol>' +  document.getElementById('tasksForm').innerHTML + '</ol>',
@@ -100,6 +101,7 @@ myBtns.addEventListener('click',async (e) => {
             })
             checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
             unchecked = document.querySelectorAll('input[type="checkbox"]').length - liElements -1;
+
 
         }
 
@@ -139,9 +141,11 @@ let timeReamaining = async () => {
             EndTime = checkEndtime.format("HH:mm:ss");
 
             if (document.querySelectorAll('input[type="checkbox"]').length > 0){
+                clearAll();
+
                 const {value: formValues} = await Swal.fire({
                     title: 'Select you objectives',
-                    html:'ol' +  document.getElementById('tasksForm').innerHTML + 'ol',
+                    html:'<ol>' +  document.getElementById('tasksForm').innerHTML + '</ol>',
                     focusConfirm: false,
 
 
@@ -161,7 +165,7 @@ let timeReamaining = async () => {
 
             clearAll();
         }
-        seconds = 0;
+        seconds = 59;
     }
 //Here we are rendring the change in time on the timer screen       
     let time = `${workMinutes < 10 ? `0${workMinutes}` : workMinutes}:${seconds < 10 ? `0${seconds}` : seconds}`
@@ -307,7 +311,6 @@ document.addEventListener('click', e => {
     // checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
     // unchecked = document.querySelectorAll('input[type="checkbox"]').length;
 
-    console.log(checked, unchecked);
 
 
 
@@ -333,8 +336,6 @@ function addTask(task) {
     listItem.dataset.taskId = task.id
     listItemForm.dataset.taskId = task.id
 
-    // const checkbox = templateClone.querySelector('input[type=checkbox]')
-    // checkbox.checked = task.complete
     const taskName = templateClone.querySelector('.task-name')
     const taskNameForm = templateCloneForm.querySelector('.task-name-form')
 
