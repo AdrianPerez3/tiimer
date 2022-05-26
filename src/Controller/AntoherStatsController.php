@@ -18,10 +18,16 @@ class AntoherStatsController extends AbstractController
         $sumChecked = $entityManager->getRepository(Tiimer::class)->getCountCheckedOfLast30Days($this->getUser());
         $totalTime = $entityManager->getRepository(Tiimer::class)->getTotalTime($this->getUser())[0]['TOTAL'];
         $getAllChecked = $entityManager->getRepository(Tiimer::class)->getAllChecked($this->getUser());
-        $getDayMoreActivity = $entityManager->getRepository(Tiimer::class)->getDayMoreActivity($this->getUser())[0]['date'];
+        if ($entityManager->getRepository(Tiimer::class)->getDayMoreActivity($this->getUser()) == null){
+            $getDayMoreActivity = 0;
+            $totalGetAllChecked = 0;
+        }else{
+            $getDayMoreActivity = $entityManager->getRepository(Tiimer::class)->getDayMoreActivity($this->getUser())[0]['date'];
+            $totalGetAllChecked = ($getAllChecked[0]['Checked']/$getAllChecked[0]['Unchecked'])*100;
+
+        }
         $getBestUser = $entityManager->getRepository(Tiimer::class)->getBestUser()[0]['idUser'];
         $bestUser = $entityManager->getRepository(User::class)->find($getBestUser)->getName();
-        $totalGetAllChecked = ($getAllChecked[0]['Checked']/$getAllChecked[0]['Unchecked'])*100;
         $totalTime = gmdate("H:i:s", $totalTime);
 
 

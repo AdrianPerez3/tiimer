@@ -44,7 +44,11 @@
                 <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-header text-center">Day with more activity</div>
                     <div class="card-body">
-                        <h5 class="card-title text-center">{{ getDayMoreActivity|date("m/d/Y") }}</h5>
+                        {% if getDayMoreActivity != 0 %}
+                            <h5 class="card-title text-center">{{ getDayMoreActivity|date("m/d/Y") }}</h5>
+                            {% else %}
+                                <h5 class="card-title text-center">0</h5>
+                        {% endif %}
                     </div>
                 </div>
             </div>

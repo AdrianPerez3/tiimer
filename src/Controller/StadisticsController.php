@@ -24,6 +24,8 @@ class StadisticsController extends AbstractController
         $checkbyDates = $entityManager->getRepository(Tiimer::class)->getCheckedByDate($this->getUser());
         $uncheckedByDates  = $entityManager->getRepository(Tiimer::class)->getUncheckedByDate($this->getUser());
 
+        $unchecked = [];
+
         $fechas = [];
         $count = [];
 
