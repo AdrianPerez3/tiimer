@@ -63,8 +63,6 @@ G
 composer.json,3\9\3957b91a0d8450cea0115cfd5af69eac90d75897
 \
 ,src/Controller/TableStadisticsController.php,e\f\efde8071716529bd2ad7abfae2957832e6ed7785
-H
-templates/menu.html.twig,7\9\79f90f656523033bf56fd15339147cde360ca01a
 E
 src/Entity/Tiimer.php,1\1\1145819adbf92fdaaccf3a658621616f15a196e4
 C
