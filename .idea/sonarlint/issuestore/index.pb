@@ -39,8 +39,6 @@ Q
 !templates/profile/index.html.twig,7\7\7757e495b526dc00ab2a3d1936747ded042766a6
 L
 src/Form/EditProfileType.php,4\d\4db6f4faeaa4b757f9b523e6d5daf915b7a4fd02
-D
-config/services.yaml,8\7\87042d1f46b57381244d70e7a42feeb7710727dc
 B
 config/routes.yaml,b\a\baef02989dedf0ec859f7bce087a69f29bef2b72
 B
@@ -61,16 +59,10 @@ E
 src/Entity/Tiimer.php,1\1\1145819adbf92fdaaccf3a658621616f15a196e4
 C
 src/Entity/User.php,0\a\0a3e99b9da178509aeb5b3fa6f5dce46bc0eb8be
-S
-#src/Controller/TiimerController.php,e\7\e7c886b4263757cdb60351f693503705cc5cd58c
 F
 public/tiimer/timer.js,1\7\170d517a5d04c3d9bca1f92bf32775efb4b36044
-M
-config/packages/security.yaml,c\5\c5f941b4d4e9404f23935164fabdd261abb68e93
 W
 'src/Security/LoginFormAuthenticator.php,5\8\58103073fd1d1900e366a38250f7db278e4f59eb
-P
- templates/tiimer/index.html.twig,7\7\77c4b4ae686d77fa0d51ef7aafae8e4c84de4572
 G
 public/tiimer/style.css,f\a\fafc50df199c6b8c937c378af6b338ce2057c137
 O
