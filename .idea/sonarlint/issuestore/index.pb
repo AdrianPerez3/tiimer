@@ -39,8 +39,6 @@ N
 templates/main/index.html.twig,e\5\e52eb820c0446471f105cfb13cd6a9bee82467dc
 Q
 !templates/profile/index.html.twig,7\7\7757e495b526dc00ab2a3d1936747ded042766a6
-T
-$src/Controller/ProfileController.php,1\2\12a35d23b3c5dd69aeaae65dfd71813f4731d870
 L
 src/Form/EditProfileType.php,4\d\4db6f4faeaa4b757f9b523e6d5daf915b7a4fd02
 4
@@ -69,3 +67,21 @@ C
 src/Entity/User.php,0\a\0a3e99b9da178509aeb5b3fa6f5dce46bc0eb8be
 S
 #src/Controller/TiimerController.php,e\7\e7c886b4263757cdb60351f693503705cc5cd58c
+F
+public/tiimer/timer.js,1\7\170d517a5d04c3d9bca1f92bf32775efb4b36044
+M
+config/packages/security.yaml,c\5\c5f941b4d4e9404f23935164fabdd261abb68e93
+W
+'src/Security/LoginFormAuthenticator.php,5\8\58103073fd1d1900e366a38250f7db278e4f59eb
+P
+ templates/tiimer/index.html.twig,7\7\77c4b4ae686d77fa0d51ef7aafae8e4c84de4572
+G
+public/tiimer/style.css,f\a\fafc50df199c6b8c937c378af6b338ce2057c137
+O
+templates/tiimer/form.html.twig,2\e\2ed32fca054079d55c8c3db3ea72ec7e4437f201
+S
+#src/Repository/TiimerRepository.php,9\4\942f1031e0955c49ff382ef678a7aa32be735bd5
+T
+$templates/stadistics/index.html.twig,9\6\96e58412405f181ebd46704d7148fe2c138085b2
+W
+'src/Controller/StadisticsController.php,3\b\3b91a3f9c133841a3ce2a6f363580e8aa942edfd
