@@ -25,8 +25,6 @@ U
 %src/Controller/SecurityController.php,7\c\7cc876ecdb4df676c79a6188e9f3ac45e5079434
 Y
 )src/Controller/RegistrationController.php,b\6\b6a5dce1eac6107738aa6c9b363b605aa2315b2c
-R
-"templates/security/login.html.twig,8\9\89d5f9595fc54c90b0c2626c3e5e07e23a679864
 9
 	yarn.lock,5\3\53585a096fe3a3b96321113856ae62602995a33b
 A
@@ -41,10 +39,6 @@ L
 src/Form/EditProfileType.php,4\d\4db6f4faeaa4b757f9b523e6d5daf915b7a4fd02
 B
 config/routes.yaml,b\a\baef02989dedf0ec859f7bce087a69f29bef2b72
-B
-config/preload.php,5\7\57f539ca2492dde303b2e757baaa84418aca539f
-B
-config/bundles.php,f\a\fa9a09a4e1ae4281250526d3dec214138beb5735
 Z
 *templates/table_stadistics/index.html.twig,e\a\ea79ae13617afbbabe50d6a3d6d447250ddcf7c4
 G
@@ -69,7 +63,5 @@ O
 templates/tiimer/form.html.twig,2\e\2ed32fca054079d55c8c3db3ea72ec7e4437f201
 S
 #src/Repository/TiimerRepository.php,9\4\942f1031e0955c49ff382ef678a7aa32be735bd5
-T
-$templates/stadistics/index.html.twig,9\6\96e58412405f181ebd46704d7148fe2c138085b2
 W
 'src/Controller/StadisticsController.php,3\b\3b91a3f9c133841a3ce2a6f363580e8aa942edfd
