@@ -35,14 +35,10 @@ A
 symfony.lock,e\1\e17766cca3407ba620a8cef1c14d37208a74e8a4
 L
 config/packages/routing.yaml,0\0\001fdc7418679b6419e44b1142ab051819764ece
-N
-templates/main/index.html.twig,e\5\e52eb820c0446471f105cfb13cd6a9bee82467dc
 Q
 !templates/profile/index.html.twig,7\7\7757e495b526dc00ab2a3d1936747ded042766a6
 L
 src/Form/EditProfileType.php,4\d\4db6f4faeaa4b757f9b523e6d5daf915b7a4fd02
-4
-.env,3\c\3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
 D
 config/services.yaml,8\7\87042d1f46b57381244d70e7a42feeb7710727dc
 B
